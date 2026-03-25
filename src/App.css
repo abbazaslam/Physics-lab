@@ -1,0 +1,539 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Main container */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Left panel - 20% */
+.left-panel {
+  width: 20%;
+  background-color: #1f2937;
+  color: white;
+  padding: 16px;
+}
+
+/* Right panel - 80% */
+.right-panel {
+  width: 80%;
+  background-color: white;
+  padding: 16px;
+}
+/* Panels already exist, adding button styles */
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Flexible button */
+.tool-button {
+  padding: 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tool-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Image on canvas */
+.power-supply-canvas img {
+  width: 80px;
+}
+.component {
+  user-select: none;
+}
+
+.right-panel {
+  position: relative;     
+  overflow: hidden;        /* Prevent visual overflow */
+  background-color: white
+}
+
+/* TERMINAL DOTS */
+.terminal {
+  width: 10px;
+  height: 10px;
+  background-color: #111;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Left dot */
+.left-terminal {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Right dot */
+.right-terminal {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Visual clarity */
+.power-supply {
+  position: relative;
+}
+/* Top terminal (for Ground) */
+.top-terminal {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Bottom terminal (Power Supply −) */
+.bottom-terminal {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ─── Add these rules to your existing App.css ─── */
+ 
+/* Wire tool button – highlights when active */
+.tool-button.wire-button {
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 12px;
+}
+ 
+.tool-button.wire-button.active {
+  background: #E6F1FB;
+  color: #185FA5;
+  border-color: #378ADD;
+  font-weight: 600;
+}
+ 
+/* Crosshair cursor on canvas when wire mode is on */
+.right-panel.wire-cursor {
+  cursor: crosshair;
+}
+ 
+/* Small hint bar at the bottom of the canvas */
+.wire-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+ 
+/* ─── Add these rules to your existing App.css ─── */
+
+/* Wire tool button – highlights when active */
+.tool-button.wire-button {
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 12px;
+}
+
+.tool-button.wire-button.active {
+  background: #E6F1FB;
+  color: #185FA5;
+  border-color: #378ADD;
+  font-weight: 600;
+}
+
+/* Crosshair cursor on canvas when wire mode is on */
+.right-panel.wire-cursor {
+  cursor: crosshair;
+}
+
+/* Small hint bar at the bottom of the canvas */
+.wire-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Simulation readout panel ────────────────────────────────────────────── */
+.sim-panel {
+  margin-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 10px;
+}
+
+.sim-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.sim-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.sim-label {
+  font-weight: 600;
+  color: #444;
+}
+
+.sim-values {
+  color: #222;
+}
+
+.sim-nc {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* ── Resistor live label ────────────────────────────────────────────────── */
+.resistor-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #378ADD;
+  white-space: nowrap;
+  pointer-events: none;
+}
+/* ─── Add these rules to your existing App.css ─── */
+
+/* Wire tool button – highlights when active */
+.tool-button.wire-button {
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 12px;
+}
+
+.tool-button.wire-button.active {
+  background: #E6F1FB;
+  color: #185FA5;
+  border-color: #378ADD;
+  font-weight: 600;
+}
+
+/* Crosshair cursor on canvas when wire mode is on */
+.right-panel.wire-cursor {
+  cursor: crosshair;
+}
+
+/* Small hint bar at the bottom of the canvas */
+.wire-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Simulation readout panel ────────────────────────────────────────────── */
+.sim-panel {
+  margin-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 10px;
+}
+
+.sim-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.sim-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.sim-label {
+  font-weight: 600;
+  color: #444;
+}
+
+.sim-values {
+  color: #222;
+}
+
+.sim-nc {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* ── Resistor live label ────────────────────────────────────────────────── */
+.resistor-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #378ADD;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── Fault panel ────────────────────────────────────────────────────────── */
+.fault-panel {
+  margin-top: 16px;
+  border-top: 1px solid rgba(226,75,74,0.2);
+  padding-top: 10px;
+}
+
+.fault-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E24B4A;
+  margin-bottom: 8px;
+}
+
+.fault-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(226,75,74,0.07);
+  border: 1px solid rgba(226,75,74,0.2);
+}
+
+.fault-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fault-msg {
+  font-size: 11px;
+  color: #c0392b;
+  line-height: 1.5;
+}
+
+/* ── Faulty component red outline ───────────────────────────────────────── */
+.component.has-fault {
+  outline: 2px solid #E24B4A;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* ─── Add these rules to your existing App.css ─── */
+
+/* Wire tool button – highlights when active */
+.tool-button.wire-button {
+  margin-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 12px;
+}
+
+.tool-button.wire-button.active {
+  background: #E6F1FB;
+  color: #185FA5;
+  border-color: #378ADD;
+  font-weight: 600;
+}
+
+/* Crosshair cursor on canvas when wire mode is on */
+.right-panel.wire-cursor {
+  cursor: crosshair;
+}
+
+/* Small hint bar at the bottom of the canvas */
+.wire-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+/* ── Simulation readout panel ────────────────────────────────────────────── */
+.sim-panel {
+  margin-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 10px;
+}
+
+.sim-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.sim-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.sim-label {
+  font-weight: 600;
+  color: #444;
+}
+
+.sim-values {
+  color: #222;
+}
+
+.sim-nc {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* ── Resistor live label ────────────────────────────────────────────────── */
+.resistor-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #378ADD;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── Fault panel ────────────────────────────────────────────────────────── */
+.fault-panel {
+  margin-top: 16px;
+  border-top: 1px solid rgba(226,75,74,0.2);
+  padding-top: 10px;
+}
+
+.fault-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E24B4A;
+  margin-bottom: 8px;
+}
+
+.fault-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(226,75,74,0.07);
+  border: 1px solid rgba(226,75,74,0.2);
+}
+
+.fault-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fault-msg {
+  font-size: 11px;
+  color: #c0392b;
+  line-height: 1.5;
+}
+
+/* ── Faulty component red outline ───────────────────────────────────────── */
+.component.has-fault {
+  outline: 2px solid #E24B4A;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Checking indicator ──────────────────────────────────────────────────── */
+.sim-checking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #378ADD;
+  padding: 8px 10px;
+  background: rgba(55,138,221,0.07);
+  border: 1px solid rgba(55,138,221,0.2);
+  border-radius: 6px;
+}
+
+.sim-checking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #378ADD;
+  animation: pulse-dot 0.6s ease-in-out infinite alternate;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0.3; transform: scale(0.7); }
+}
+
+/* ── Idle hint ───────────────────────────────────────────────────────────── */
+.sim-idle {
+  margin-top: 16px;
+  font-size: 11px;
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+  padding: 8px;
+}
